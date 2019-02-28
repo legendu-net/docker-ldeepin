@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t dclong/ldeepin .
+docker build -t dclong/deepin .
