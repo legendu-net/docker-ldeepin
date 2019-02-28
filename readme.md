@@ -12,30 +12,34 @@ and mounts the current working directory and `/home` on the host machine
 to `/workdir` and `/home_host` in the container respectively.
 ```
 docker run -d \
-    --name jupyterhub-ds \
+    --name ldeepin \
     --log-opt max-size=50m \
+    -p 4000:4000 \
     -e DOCKER_USER=`id -un` \
     -e DOCKER_USER_ID=`id -u` \
     -e DOCKER_PASSWORD=`id -un` \
     -e DOCKER_GROUP_ID=`id -g` \
     -v `pwd`:/workdir \
     -v `dirname $HOME`:/home_host \
+    --cap-add=SYS_PTRACE \
     dclong/ldeepin
 ```
-The following command (only works on Linux) does the same as the above one 
+The following command does the same as the above one 
 except that it limits the use of CPU and memory.
 ```
 docker run -d \
-    --name jupyterhub-ds \
+    --name ldeepin \
     --log-opt max-size=50m \
     --memory=$(($(head -n 1 /proc/meminfo | awk '{print $2}') * 4 / 5))k \
     --cpus=$((`nproc` - 1)) \
+    -p 4000:4000 \
     -e DOCKER_USER=`id -un` \
     -e DOCKER_USER_ID=`id -u` \
     -e DOCKER_PASSWORD=`id -un` \
     -e DOCKER_GROUP_ID=`id -g` \
     -v `pwd`:/workdir \
     -v `dirname $HOME`:/home_host \
+    --cap-add=SYS_PTRACE \
     dclong/ldeepin
 ```
 A default user `dclong` with password `dclong` is used if not specified when running the docker image.
@@ -46,7 +50,6 @@ Please refer to the section
 [Remote Connect to Desktop in the Container](http://www.legendu.net/en/blog/my-docker-images/#remote-connect-to-desktop-in-the-container)
 of the post [My Docker Images](http://www.legendu.net/en/blog/my-docker-images/) 
 for detailed instruction on how to use the desktop environment in the Docker image.
-
 
 ## [Detailed Information](http://www.legendu.net/en/blog/my-docker-images/#list-of-images-and-detailed-information) 
 
