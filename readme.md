@@ -1,4 +1,8 @@
-# [dclong/deepin](https://hub.docker.com/r/dclong/deepin/)
+# [dclong/ldeepin](https://hub.docker.com/r/dclong/deepin/)
+
+## Prerequisite
+You need to [install Docker](http://www.legendu.net/en/blog/docker-installation/) before you use this Docker image.
+
 
 ## Usage in Linux/Unix
 
