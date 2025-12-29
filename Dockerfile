@@ -2,8 +2,8 @@ FROM dclong/deepin_cn
 
 ARG url=https://download.nomachine.com/download/6.5/Linux/nomachine_6.5.6_9_amd64.deb
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get -y update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install \
         dde \
         firefox \
     && wget $url -O /nomachine.deb \
